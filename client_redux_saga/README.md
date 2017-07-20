@@ -1,3 +1,1 @@
-﻿Sorry nothing of interest here ATM. Had to push to GitHub so I could eject.
-
-Hopefully something soon!
+﻿Please see README in parent folder, thanks!
