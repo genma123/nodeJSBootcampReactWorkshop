@@ -1,4 +1,4 @@
-export function tasksFetchData(tasks) {
+export function tasksFetchData() {
     return {
         type: 'TASKS_FETCH_DATA'
     };
@@ -16,6 +16,15 @@ export function tasksFetchDataSuccess(tasks) {
 export function tasksFetchDataFailure(tasks) {
     return {
         type: 'TASKS_FETCH_DATA_FAILURE'
+    };
+}
+
+export function tasksAddData(event) {
+    return {
+        type: 'TASKS_ADD_DATA',
+        payload: { 
+            event: event
+        }
     };
 }
 

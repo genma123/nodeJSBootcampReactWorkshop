@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import Immutable, { List } from 'immutable';
 
 /* export function tasksHasErrored(state = false, action) {
     switch (action.type) {
@@ -26,6 +26,9 @@ export function tasks(state, action) {
             return List(action.payload.tasks);
 
         case 'TASKS_ADD_DATA_SUCCESS':
+            /* const stateJS = state.toJS();
+            console.log(JSON.stringify(stateJS));
+            console.log(JSON.stringify(action.payload.task)); */
             return state.push(action.payload.task);     
             
         case 'TASKS_DELETE_DATA_SUCCESS':
@@ -40,6 +43,9 @@ export function tasks(state, action) {
                 });
 
         default:
+            if (state) {
+                return state;
+            }
             return List([]);
     }
 }

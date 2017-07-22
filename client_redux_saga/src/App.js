@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import {tasksFetchData} from './actions/tasks';
+import {tasksFetchData, tasksAddData} from './actions/tasks';
 import TaskList from './TaskList';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    /* this.addTask = this.addTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
+    this.addTask = this.addTask.bind(this);
+    /* this.deleteTask = this.deleteTask.bind(this);
     this.updateTask = this.updateTask.bind(this); */
   };
   
-  /* addTask(event) {
+ addTask(event) {
 	  // Client.add(event, (data) => this.setState({ tasks: this.state.tasks.concat([data]) }));
 	  event.preventDefault();
-    this.props.addData(event)
+    this.props.addData(tasksAddData(event));
   }
   
-  updateTask(id, title, selected) {
+   /* updateTask(id, title, selected) {
     this.props.updateData(id, title, selected);
   }
  
