@@ -32,3 +32,22 @@ export function addTask(endpoint, action) {
     .then((response) => response.json())
     .then((task) => task);
 }
+
+export function deleteTask(endpoint, action) {
+    const id = action.payload.id;
+    return fetch(`api/task/${id}`, {
+        headers: {
+            'Accept': 'application/json, text/plain, * / *',
+            'Content-Type': 'application/json'
+        },
+        method: "DELETE",
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    })
+    .then((response) => response.json())
+    .then(() => id);
+}

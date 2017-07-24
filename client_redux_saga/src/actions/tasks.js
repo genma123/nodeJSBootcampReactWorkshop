@@ -37,6 +37,16 @@ export function tasksAddDataSuccess(task) {
     };
 }
 
+export function tasksDeleteData(id) {
+    console.log("ID: " + id);
+    return {
+        type: 'TASKS_DELETE_DATA',
+        payload: { 
+            id: id
+        }
+    };
+}
+
 export function tasksDeleteDataSuccess(id) {
     return {
         type: 'TASKS_DELETE_DATA_SUCCESS',

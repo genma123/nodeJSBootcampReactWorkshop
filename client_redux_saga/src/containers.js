@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { tasksFetchData, tasksAddData /*, tasksDeleteData, tasksUpdateData */ } from './actions/tasks';
+import { tasksFetchData, tasksAddData, tasksDeleteData /*, tasksUpdateData */ } from './actions/tasks';
 import App from './App';
 
 const mapStateToProps = (state) => {
@@ -13,9 +13,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: () => dispatch(tasksFetchData()),
-        addData: (event) => dispatch(tasksAddData(event)) /* ,
+        addData: (event) => dispatch(tasksAddData(event)),
         deleteData: (id) => dispatch(tasksDeleteData(id)),
-        updateData: (id, title, selected) => dispatch(tasksUpdateData(id, title, selected)), */
+         /* updateData: (id, title, selected) => dispatch(tasksUpdateData(id, title, selected)), */
     };
 };
 
