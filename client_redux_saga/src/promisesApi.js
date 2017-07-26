@@ -1,5 +1,5 @@
 export function fetchTasks(endpoint) {
-   return fetch(endpoint)
+   return fetch(`${endpoint}`)
        .then((response) => {
         if (!response.ok) {
             throw Error(response.statusText);
@@ -15,7 +15,7 @@ export function addTask(endpoint, action) {
     var event = action.payload.event;
     var task = { title: event.target.elements.title.value, isDone: false };
     var body = JSON.stringify(task);
-    return fetch(endpoint, {
+    return fetch(`${endpoint}`, {
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export function addTask(endpoint, action) {
 
 export function deleteTask(endpoint, action) {
     const id = action.payload.id;
-    return fetch(`api/task/${id}`, {
+    return fetch(`${endpoint}/${id}`, {
         headers: {
             'Accept': 'application/json, text/plain, * / *',
             'Content-Type': 'application/json'

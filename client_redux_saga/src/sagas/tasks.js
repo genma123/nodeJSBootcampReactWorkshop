@@ -4,7 +4,7 @@ import {fetchTasks, addTask, deleteTask} from '../promisesApi';
 
 function* fetchData() {
   yield put (tasksFetchData);
-  const tasks = yield call(fetchTasks, '/api/tasks');
+  const tasks = yield call(fetchTasks, 'api/tasks');
   /* if (err) {// failure not an option LOL
     yield put(tasksFetchDataFailure(err));
   } else { */
@@ -15,7 +15,7 @@ function* fetchData() {
 function* addData(action) {
   yield put (tasksAddData);
   const event = action.payload.event;
-  const task = yield call(addTask, `api/task`, event);
+  const task = yield call(addTask, 'api/task', event);
   /* if (err) {// failure not an option LOL
     yield put(tasksFetchDataFailure(err));
   } else { */
@@ -26,7 +26,7 @@ function* addData(action) {
 function* deleteData(action) {
   yield put (tasksDeleteData);
   const id = action.payload.id;
-  const id2 = yield call(deleteTask, `api/task`, id);
+  const id2 = yield call(deleteTask, 'api/task', id);
   /* if (err) {// failure not an option LOL
     yield put(tasksFetchDataFailure(err));
   } else { */
