@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {tasksFetchData, tasksAddData, tasksDeleteData} from './actions/tasks';
+import {tasksFetchData, tasksAddData, tasksDeleteData, tasksUpdateData} from './actions/tasks';
 import TaskList from './TaskList';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
 
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-    /* this.updateTask = this.updateTask.bind(this); */
+    this.updateTask = this.updateTask.bind(this);
   };
   
  addTask(event) {
@@ -18,9 +18,9 @@ class App extends Component {
     this.props.addData(tasksAddData(event));
   }
   
-  /* updateTask(id, title, selected) {
-    this.props.updateData(id, title, selected);
-  } */
+  updateTask(id, title, selected) {
+    this.props.updateData(tasksUpdateData(id, title, selected));
+  }
  
   deleteTask(id) {
     this.props.deleteData(tasksDeleteData(id));

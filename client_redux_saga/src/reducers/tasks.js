@@ -35,11 +35,12 @@ export function tasks(state, action) {
             return state.filter(t => t._id !== action.payload.id);
         
         case 'TASKS_UPDATE_DATA_SUCCESS':
-            let ix = state.findIndex(t => { return t._id === action.payload.id; });
+        console.log("PAYLOAD: " + JSON.stringify(action.payload));
+            let ix = state.findIndex(t => { return t._id === action.payload.task._id; });
             return state.set(ix,
-                { _id: action.payload.id,
-                    title: action.payload.title,
-                    isDone: action.payload.selected
+                { _id: action.payload.task._id,
+                    title: action.payload.task.title,
+                    isDone: action.payload.task.selected
                 });
 
         default:

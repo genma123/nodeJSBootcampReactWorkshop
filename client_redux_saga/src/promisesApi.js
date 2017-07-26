@@ -51,3 +51,31 @@ export function deleteTask(endpoint, action) {
     .then((response) => response.json())
     .then(() => id);
 }
+
+export function updateTask(endpoint, action) {
+    const task =
+        {
+            _id: action.payload.id,
+            title: action.payload.title,
+            isDone: action.payload.selected
+        };
+    var body = JSON.stringify(task);
+    fetch(`${endpoint}/${task._id}`, {
+        headers: {
+            'Accept': 'application/json, text/plain, * / *',
+            'Content-Type': 'application/json'
+        },
+        method: "PUT",
+        body: body
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    })
+    .then((response) => response.json())
+    .then(() => { 
+        console.log("TASK: " + JSON.stringify(task));
+        return task; });
+}

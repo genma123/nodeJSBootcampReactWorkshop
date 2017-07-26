@@ -55,3 +55,23 @@ export function tasksDeleteDataSuccess(id) {
         }
     };
 }
+
+export function tasksUpdateData(id, title, selected) {
+    return {
+        type: 'TASKS_UPDATE_DATA',
+        payload: { 
+            id: id,
+            title: title,
+            selected: selected
+        }
+    };
+}
+
+export function tasksUpdateDataSuccess(task) {
+    return {
+        type: 'TASKS_UPDATE_DATA_SUCCESS',
+        payload: { 
+            task: task
+        }
+    };
+}
