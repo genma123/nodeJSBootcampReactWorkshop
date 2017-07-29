@@ -30,7 +30,9 @@ export function addTask(endpoint, action) {
         return response;
     })
     .then((response) => response.json())
-    .then((task) => task);
+    .then((task) => { 
+        console.log("NEW TASK: " + JSON.stringify(task));
+        return task; });
 }
 
 export function deleteTask(endpoint, action) {
@@ -60,7 +62,7 @@ export function updateTask(endpoint, action) {
             isDone: action.payload.selected
         };
     var body = JSON.stringify(task);
-    fetch(`${endpoint}/${task._id}`, {
+    return fetch(`${endpoint}/${task._id}`, {
         headers: {
             'Accept': 'application/json, text/plain, * / *',
             'Content-Type': 'application/json'
@@ -72,10 +74,12 @@ export function updateTask(endpoint, action) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
-        return response;
-    })
-    .then((response) => response.json())
-    .then(() => { 
         console.log("TASK: " + JSON.stringify(task));
-        return task; });
+        return task /* response */;
+    })
+    /* .then((response) => response.json())
+    .then((x) => { 
+        console.log("x: " + JSON.stringify(x));
+        console.log("TASK: " + JSON.stringify(task));
+        return task; }); */
 }

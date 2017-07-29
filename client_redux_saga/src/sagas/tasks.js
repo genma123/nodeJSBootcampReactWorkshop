@@ -2,7 +2,7 @@ import { takeEvery, put, call, all } from 'redux-saga/effects';
 import {tasksFetchData, tasksFetchDataSuccess, tasksFetchDataFailure, tasksAddData, tasksAddDataSuccess, tasksDeleteData, tasksDeleteDataSuccess, tasksUpdateData, tasksUpdateDataSuccess} from '../actions/tasks';
 import {fetchTasks, addTask, deleteTask, updateTask} from '../promisesApi';
 
-function* fetchData() {
+function* fetchData(action) {
   yield put (tasksFetchData);
   const tasks = yield call(fetchTasks, 'api/tasks');
   /* if (err) {// failure not an option LOL
@@ -15,12 +15,28 @@ function* fetchData() {
 function* addData(action) {
   yield put (tasksAddData);
   const event = action.payload.event;
+  // console.log(`title: ${event.target.elements.title.value}`)
   const task = yield call(addTask, 'api/task', event);
   /* if (err) {// failure not an option LOL
     yield put(tasksFetchDataFailure(err));
   } else { */
     console.log("THE TASK: " + JSON.stringify(task));
     yield put(tasksAddDataSuccess(task));
+  /* } */
+}
+
+function* updateData(action) {
+  yield put (tasksUpdateData);
+  const id = action.payload.id;
+  const title  = action.payload.title;
+  const selected = action.payload.selected;
+  console.log(`id: ${id}, title: ${title}, selected: ${selected}`)
+  const task = yield call(updateTask, 'api/task', id, title, selected);
+  /* if (err) {// failure not an option LOL
+    yield put(tasksFetchDataFailure(err));
+  } else { */
+    console.log("TASK: " + JSON.stringify(task));
+    yield put(tasksUpdateDataSuccess(task));
   /* } */
 }
 
@@ -35,19 +51,6 @@ function* deleteData(action) {
   /* } */
 }
 
-function* updateData(action) {
-  yield put (tasksUpdateData);
-  const id = action.payload.id;
-  const title  = action.payload.title;
-  const selected = action.payload.selected;
-  const task = yield call(updateTask, 'api/task', id, title, selected);
-  /* if (err) {// failure not an option LOL
-    yield put(tasksFetchDataFailure(err));
-  } else { */
-    console.log("TASK: " + JSON.stringify(task));
-    yield put(tasksUpdateDataSuccess(task));
-  /* } */
-}
 const taskSagas = [
     takeEvery("TASKS_FETCH_DATA", fetchData),
     takeEvery("TASKS_ADD_DATA", addData),

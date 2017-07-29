@@ -40,7 +40,7 @@ export function tasks(state, action) {
             return state.set(ix,
                 { _id: action.payload.task._id,
                     title: action.payload.task.title,
-                    isDone: action.payload.task.selected
+                    isDone: action.payload.task.isDone
                 });
 
         default:
