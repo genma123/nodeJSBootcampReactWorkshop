@@ -3,7 +3,6 @@ import {tasksFetchData, tasksFetchDataSuccess, tasksFetchDataFailure, tasksAddDa
 import {fetchTasks, addTask, deleteTask, updateTask} from '../promisesApi';
 
 function* fetchData(action) {
-  yield put (tasksFetchData);
   const tasks = yield call(fetchTasks, 'api/tasks');
   /* if (err) {// failure not an option LOL
     yield put(tasksFetchDataFailure(err));
@@ -13,7 +12,6 @@ function* fetchData(action) {
 }
 
 function* addData(action) {
-  yield put (tasksAddData);
   const event = action.payload.event;
   // console.log(`title: ${event.target.elements.title.value}`)
   const task = yield call(addTask, 'api/task', event);
@@ -26,7 +24,6 @@ function* addData(action) {
 }
 
 function* updateData(action) {
-  yield put (tasksUpdateData);
   const id = action.payload.id;
   const title  = action.payload.title;
   const selected = action.payload.selected;
@@ -41,7 +38,6 @@ function* updateData(action) {
 }
 
 function* deleteData(action) {
-  yield put (tasksDeleteData);
   const id = action.payload.id;
   const id2 = yield call(deleteTask, 'api/task', id);
   /* if (err) {// failure not an option LOL
