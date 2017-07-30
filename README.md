@@ -12,7 +12,7 @@ I was asked to give a second presentation and decided I wanted to talk about Red
 
 I would like to think that the two Redux examples are self-explanatory, but please post an issue if there's something you don't understand.
 
-I suppose my next step would be to use Axios. I believe that would mostly be a refinement of the redux-sage example.
+I suppose my next step would be to use Axios. I believe that would mostly be a refinement of the redux-saga example.
 
 ### Note about error-handling
 You may notice these examples lack error-handling. As my original non-Redux example did no error-handling, I decided there was no urgent need to include it in the Redux examples. I apologize to any who might frown on such an omission.
