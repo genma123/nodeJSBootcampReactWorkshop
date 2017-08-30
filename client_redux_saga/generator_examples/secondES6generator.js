@@ -14,9 +14,9 @@ function *myGenerator() {
 
 let iterator = myGenerator();
 iterator.next().value
-.then(() => iterator.next('999'))
-.then(() => { let c = iterator.next('000');
-		console.log(JSON.stringify(c)); });
+.then(() => iterator.next('999').value
+    .then(() => { let c = iterator.next('000');
+		console.log(JSON.stringify(c)); }));
 
 // output:
 // 1
